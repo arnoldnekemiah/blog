@@ -63,6 +63,8 @@ group :development do
 
   gem 'rspec-rails'
 
+  gem 'factory_bot_rails'
+
   gem 'error_highlight', '>= 0.4.0', platforms: [:ruby]
 end
 

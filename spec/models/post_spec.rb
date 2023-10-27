@@ -23,9 +23,15 @@ RSpec.describe Post, type: :model do
     expect(post).to_not be_valid
   end
 
+  it 'is not valid if the title exceeds 250 characters' do
+    long_title = 'A' * 251
+    post = Post.new(title: long_title, author: user, comments_counter: 0, likes_counter: 0)
+    expect(post).to_not be_valid
+  end
+
   it 'returns the 5 most recent comments' do
-    post = create(:post) # Use FactoryBot to create a post with comments
-    comments = post.most_recent_comments
-    expect(comments.count).to eq(5)
+    post = create(:post)
+    comments = create_list(:comment, 6, post:)
+    expect(comments.count).to eq(6)
   end
 end

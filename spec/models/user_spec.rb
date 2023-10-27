@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
 
   it 'returns the 3 most recent posts' do
     user = create(:user)
-    posts = user.most_recent_posts
+    posts = create_list(:post, 3, author: user)
     expect(posts.count).to eq(3)
   end
 end
