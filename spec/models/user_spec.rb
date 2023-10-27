@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'returns the 3 most recent posts' do
-    user = create(:user) # Use FactoryBot to create a user with posts
+    user = create(:user)
     posts = user.most_recent_posts
     expect(posts.count).to eq(3)
   end

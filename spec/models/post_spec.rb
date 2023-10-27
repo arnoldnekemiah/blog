@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:user) { create(:user) } # Use FactoryBot or your preferred way to create test data
+  let(:user) { create(:user) }
 
   it 'is valid with valid attributes' do
     post = Post.new(title: 'A Title', author: user, comments_counter: 0, likes_counter: 0)
