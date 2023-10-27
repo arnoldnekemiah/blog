@@ -20,7 +20,7 @@ default: &default
 
 development:
   <<: *default
-  database: blog_development
+  database: my-blog
   adapter: postgresql
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -29,7 +29,7 @@ development:
   username: postgres
 
   # The password associated with the PostgreSQL role (username).
-  password: 12345
+  password: root
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
