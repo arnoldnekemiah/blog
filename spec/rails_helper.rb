@@ -6,6 +6,8 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'factory_bot_rails'
+require 'rails-controller-testing'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -31,6 +33,9 @@ rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
+  config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: %r{spec/requests}
+  config.include RSpec::Rails::ControllerExampleGroup, type: :controller, file_path: %r{spec/controllers}
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{Rails.root}/spec/fixtures"
 
