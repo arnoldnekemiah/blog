@@ -20,19 +20,19 @@ RSpec.describe 'Users', type: :request do
 
   describe 'GET /show' do
     it 'returns a 200 status code' do
-      # Assuming you have a user with ID 1, you can change this as needed
+      # Assuming you have a user with ID 1,
       get user_path(1)
       expect(response).to have_http_status(200)
     end
 
     it 'renders the show template' do
-      # Assuming you have a user with ID 1, you can change this as needed
+      # Assuming you have a user with ID 1,
       get user_path(1)
       expect(response).to render_template(:show)
     end
 
     it 'includes the correct placeholder text in the response body' do
-      # Assuming you have a user with ID 1, you can change this as needed
+      # Assuming you have a user with ID 1,
       get user_path(1)
       expect(response.body).to include('Here is a selected user')
     end
