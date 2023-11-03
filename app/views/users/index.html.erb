@@ -1,9 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Users</title>
-</head>
-<body>
- <h1>Here is a list of users</h1>
-</body>
-</html>
+<h1>All Users</h1>
+<ul>
+  <% @users.each do |user| %>
+    <div class="user-row">
+      <div class="user-photo">
+        <%= image_tag user.photo %>
+      </div>
+      <div class="user-info">
+        <%= link_to user.name, user_path(user) %>
+        <div class="post-counter">Number of posts: <%= user.posts.count %></div>
+      </div>
+    </div>
+  <% end %>
+</ul>
