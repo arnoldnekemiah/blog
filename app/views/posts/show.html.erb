@@ -14,10 +14,10 @@
 </div>
 
 <div class="comments-container">
+  <h2>Comments</h2>
   <% @comments.each do |comment| %>
-  <%= "Comments" %>
     <div class="comment">
-      <span class="comment-author"><%= comment.author.name %>:</span>
+      <span class="comment-author"><%= comment.user.name %> :</span>
       <span class="comment-text"><%= comment.text %></span>
     </div>
   <% end %>

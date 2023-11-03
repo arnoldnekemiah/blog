@@ -1,9 +1,9 @@
 <h1>Here is a list of posts for a given user</h1>
+
 <%= link_to user_path(@user), class: "user-row-link" do %>
-  
-    <div class="user-photo">
-      <%= image_tag @user.photo %>
-    </div>
+  <div class="user-photo">
+    <%= image_tag @user.photo %>
+  </div>
   <div class="user-row">
     <div class="user-info">
       <h2><%= @user.name %></h2>
@@ -12,19 +12,25 @@
   </div>
 <% end %>
 
-<% @user.posts do |post| %>
-  <%= link_to user_post_path(@user, post), class: "post-link" do %>
-    <div class="post-row">
-      <h3><%= post.title %></h3>
-      <p><%= truncate(post.text, length: 50) %></p>
-      <div class="post-stats">
-        <span>Comments: <%= post.comments.count %></span>
-        <span>Likes: <%= post.likes.count %></span>
+<% if @user.posts.any? %>
+  <h2>User's Posts</h2>
+  <% @user.posts.each do |post| %>
+    <%= link_to user_post_path(@user, post), class: "post-link" do %>
+      <div class="post-row">
+        <h3><%= post.title %></h3>
+        <p><%= truncate(post.text, length: 50) %></p>
+        <div class="post-stats">
+          <span>Comments: <%= post.comments.count %></span>
+          <span>Likes: <%= post.likes.count %></span>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
+<% else %>
+  <p>No posts available for this user.</p>
+<% end %>
 
- <div class="comments-container">
+<div class="comments-container">
   <% @comments.each do |comment| %>
     <div class="comment">
       <span class="comment-author"><%= comment.user.name %>:</span>
@@ -32,9 +38,6 @@
     </div>
   <% end %>
 </div>
-
-
-<% end %>
 
 <%= link_to 'Create a new post', new_user_post_path(@user), class: 'see-all-posts-btn' %>
 
