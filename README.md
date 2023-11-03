@@ -28,7 +28,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Bloggy <a name="about-project"></a>
+# 📖 Blog <a name="about-project"></a>
 
 **Blog app** is a web project with Ruby on Rails - Explore and contribute to our open-source blog application project.
 
