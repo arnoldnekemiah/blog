@@ -107,6 +107,10 @@
   background-color: #0056b3;
 }
 
+.add-comment-button {
+  background-color: red;
+}
+
 .comments-container {
   max-width: 500px;
   margin: -11px auto 20px;
@@ -157,3 +161,6 @@
 .post-content {
   margin: 10px 0;
 }
+
+
+
