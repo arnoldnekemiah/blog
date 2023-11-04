@@ -1,9 +1,10 @@
+## users/index.html.erb
 <h1>All Users</h1>
 <ul>
   <% @users.each do |user| %>
     <div class="user-row">
       <div class="user-photo">
-        <%= image_tag user.photo %>
+        <img src="<%= user.photo %>" alt="User Photo">
       </div>
       <div class="user-info">
         <%= link_to user.name, user_path(user) %>
