@@ -1,8 +1,8 @@
 <h1>Here is a list of posts for a given user</h1>
 <%= link_to user_path(@user), class: "user-row-link" do %>
   <div class="user-photo">
-    <img src="<%= @user.photo %>" alt="User Photo">
-  </div>
+  <%= image_tag @user.photo, alt: "User Photo" %>
+</div>
   <div class="user-row">
     <div class="user-info">
       <h2><%= @user.name %></h2>
@@ -33,6 +33,4 @@
     <% end %>
   </div>
 <% end %>
-
-
 <%= link_to 'Create a new post', new_user_post_path(@user), class: 'see-all-posts-btn' %>
