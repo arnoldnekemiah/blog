@@ -19,15 +19,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = @user.posts.build(post_params)
-
+  
     if @post.save
       redirect_to user_post_path(@user, @post)
     else
       render :new
     end
   end
+  
 
   def edit; end
 
