@@ -25,7 +25,8 @@
 
   <div class="comments-container">
     <h2>Recent Comments</h2>
-    <% post.comments.each do |comment| %>
+    <% recent_comments = post.recent_comments(5) %>
+    <% recent_comments.each do |comment| %>
       <div class="comment">
         <span class="comment-author"><%= comment.user.name %>:</span>
         <span class="comment-text"><%= comment.text %></span>
