@@ -10,4 +10,9 @@ class User < ApplicationRecord
   def most_recent_posts
     posts.order(created_at: :desc).limit(3)
   end
+
+  def recent_comments
+    # criteria for recent comments, for example, comments within the last 7 days
+    comments.where('created_at >= ?', 7.days.ago)
+  end
 end
