@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def set_user_post
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
