@@ -23,14 +23,14 @@
   <% end %>
 
   <div class="comments-container">
-    <h2>Recent Comments</h2>
-    <% recent_comments = post.recent_comments(5) %>
-    <% recent_comments.each do |comment| %>
-      <div class="comment">
-        <span class="comment-author"><%= comment.user.name %>:</span>
-        <span class="comment-text"><%= comment.text %></span>
-      </div>
-    <% end %>
-  </div>
+  <h2>Recent Comments</h2>
+  <% recent_comments = post.most_recent_comments %>
+  <% recent_comments.each do |comment| %>
+    <div class="comment">
+      <span class="comment-author"><%= comment.user.name %>:</span>
+      <span class="comment-text"><%= comment.text %></span>
+    </div>
+  <% end %>
+</div>
 <% end %>
 <%= link_to 'Create a new post', new_user_post_path(@user), class: 'see-all-posts-btn' %>
