@@ -3,7 +3,6 @@
     <%= flash[:error] %>
   </div>
 <% end %>
-<!-- posts/show.html.erb -->
 <h1>Here is detail of a post for a specific user</h1>
 <div class="post-detail-row">
   <div class="post-title">
@@ -13,6 +12,19 @@
     Comments: <%= @post.comments.count %> | Likes: <%= @post.likes.count %>
   </div>
 </div>
+
+
+<!-- Like Button or Message -->
+<div class="like-btn">
+  <% if @post.liked_by?(current_user) %>
+    <p>You already liked this post.</p>
+  <% else %>
+    <%= form_with(model: [@user, @post, Like.new], url: user_post_likes_path(@user, @post), method: :post) do |form| %>
+      <%= form.submit 'Like', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <!-- Add Comment Form -->
 <div class="comments-container">
