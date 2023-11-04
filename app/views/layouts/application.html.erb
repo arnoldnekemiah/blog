@@ -8,9 +8,14 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application" %>
   </head>
 
   <body>
+    <% flash.each do |type, message| %>
+        <div class="alert alert-<%= type %>"><%= message %></div>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

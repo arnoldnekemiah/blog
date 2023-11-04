@@ -13,6 +13,16 @@
   </div>
 </div>
 
+<% if @user == @current_user %>
+  <!-- Display 'Like' link for the post if the current user is the author -->
+  <% if @post.likes.find_by(user: @current_user) %>
+    <%= link_to 'Unlike', user_post_like_path(@user, @post, @post.likes.find_by(user: @current_user)), method: :delete, class: 'like-link' %>
+  <% else %>
+    <%= link_to 'Like', user_post_likes_path(@user, @post), method: :post, class: 'like-link' %>
+  <% end %>
+<% end %>
+
+
 <div class="comments-container">
   <h2>Comments</h2>
   <% @comments.each do |comment| %>
