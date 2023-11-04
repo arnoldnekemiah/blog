@@ -27,8 +27,10 @@
   - [📝 License ](#-license-)
 
 <!-- PROJECT DESCRIPTION -->
+![image](https://github.com/arnoldnekemiah/blog/assets/42886828/4f542ddd-979d-4901-a322-500a88670f26)
 
-# 📖 Bloggy <a name="about-project"></a>
+
+# 📖 Blog <a name="about-project"></a>
 
 **Blog app** is a web project with Ruby on Rails - Explore and contribute to our open-source blog application project.
 
