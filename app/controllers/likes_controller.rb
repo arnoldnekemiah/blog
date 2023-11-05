@@ -1,4 +1,3 @@
-# likes_controller.rb
 class LikesController < ApplicationController
   def create
     @user = User.find(params[:user_id])

@@ -1,14 +1,12 @@
-<h2>Add a Comment</h2>
+<h2>Create a New Comment</h2>
 
-<%= render 'shared/error_messages', object: @comment %>
-
-<%= form_for [@user, @post, @comment] do |f| %>
+<%= form_for [@post, @comment] do |f| %>
   <div class="field">
     <%= f.label :text %>
     <%= f.text_area :text %>
   </div>
+
   <div class="actions">
-    <%= f.submit 'Add Comment' %>
+    <%= f.submit 'Create Comment' %>
   </div>
 <% end %>
-<%= link_to 'Back', user_post_path(@user, @post) %>
