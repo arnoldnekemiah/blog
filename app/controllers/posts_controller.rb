@@ -1,14 +1,64 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i[show edit update destroy]
+
   def index
-    @user = User.find(params[:user_id]) # Fetch the user by their ID
-    @posts = @user.posts # Fetch the posts related to the user
-    @recent_comments = @user.recent_comments # Fetch the recent comments for the user
-    @comments = @recent_comments
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
     @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
+    @new_comment = Comment.new
+  end
+
+  def new
+    @user = User.find(params[:user_id])
+    @post = Post.new
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+    @post = @user.posts.build(post_params)
+
+    if @post.save
+      redirect_to user_post_path(@user, @post)
+    else
+      render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to user_post_path(current_user, @post)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to user_posts_path(current_user)
+  end
+
+  def add_like
+    @post = Post.find(params[:id])
+    @like = current_user.likes.build(post: @post)
+
+    flash[:error] = 'Failed to add a like.' unless @like.save
+    redirect_to user_post_path(@post.author, @post)
+  end
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit(:title, :text)
   end
 end
