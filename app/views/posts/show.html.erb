@@ -3,43 +3,34 @@
     <%= flash[:error] %>
   </div>
 <% end %>
+
 <h1>Here is detail of a post for a specific user</h1>
 <div class="post-detail-row">
   <div class="post-title">
-    <!-- Your post content here -->
+    <%= @post.title %>
+  </div>
+  <div class="post-content">
+    <%= @post.text %>
   </div>
   <div class="post-stats">
-    Comments: <%= @post.comments.count %> | Likes: <%= @post.likes.count %>
+    Comments: <%= @post.comments.count %> |
+    <%= link_to 'Like', like_user_post_path(@user, @post), method: :post, class: 'like-link' %>
   </div>
 </div>
-
-
-<!-- Like Button or Message -->
-<div class="like-btn">
-  <% if @post.liked_by?(current_user) %>
-    <p>You already liked this post.</p>
-  <% else %>
-    <%= form_with(model: [@user, @post, Like.new], url: user_post_likes_path(@user, @post), method: :post) do |form| %>
-      <%= form.submit 'Like', class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</div>
-
 
 <!-- Add Comment Form -->
 <div class="add-comments-container">
-<%= form_for [@user, @post, @new_comment] do |f| %>
-  <div class = "add-comment-div">
-    <div class="comment">
-    <%= f.label :comment %>
-    <%= f.text_area :text %>
-  </div>
-  <div class="add-comment-button">
-    <%= f.submit "Add Comment" %>
-  </div>
-  </div>
-
-<% end %>
+  <%= form_for [@user, @post, @new_comment] do |f| %>
+    <div class="add-comment-div">
+      <div class="comment">
+        <%= f.label :text %>
+        <%= f.text_area :text %>
+      </div>
+      <div class="add-comment-button">
+        <%= f.submit "Add Comment" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

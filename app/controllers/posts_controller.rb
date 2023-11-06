@@ -44,12 +44,17 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(current_user)
   end
 
-  def add_like
+  def like
     @post = Post.find(params[:id])
     @like = current_user.likes.build(post: @post)
 
-    flash[:error] = 'Failed to add a like.' unless @like.save
-    redirect_to user_post_path(@post.author, @post)
+    if @like.save
+      flash[:notice] = 'Liked the post!'
+    else
+      flash[:error] = 'Failed to add a like.'
+    end
+
+    redirect_to user_path(@post.author) # Redirect to the user's profile page after adding the like
   end
 
   private
