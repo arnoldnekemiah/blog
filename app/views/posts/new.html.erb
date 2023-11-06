@@ -1,12 +1,15 @@
-<h1>Create a New Post</h1>
+<h1 class="new-post">Create a New Post</h1>
 
 <%= form_for [@user, @post], url: user_posts_path(@user) do |f| %>
-  <div class="field">
-    <%= f.label :title %>
+<div class="Add-post-container">
+ <div class="field">
+    <%= f.label :text %>
     <%= f.text_field :title %>
   </div>
 
-  <div class="actions">
+  <div class="create-post">
     <%= f.submit 'Create Post' %>
   </div>
+</div>
+ 
 <% end %>

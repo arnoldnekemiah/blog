@@ -27,15 +27,18 @@
 
 
 <!-- Add Comment Form -->
-<div class="comments-container">
+<div class="add-comments-container">
 <%= form_for [@user, @post, @new_comment] do |f| %>
-  <div class="comment">
-    <%= f.label :text %>
+  <div class = "add-comment-div">
+    <div class="comment">
+    <%= f.label :comment %>
     <%= f.text_area :text %>
   </div>
   <div class="add-comment-button">
     <%= f.submit "Add Comment" %>
   </div>
+  </div>
+
 <% end %>
 </div>
 
