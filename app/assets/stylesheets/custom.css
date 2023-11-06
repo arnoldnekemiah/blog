@@ -24,4 +24,15 @@
 
 .add-comment-div .comment textarea {
   border: 1px solid #2f2626;
+  height: 20px;
+  width: 100%;
+}
+
+.add-comment-button input[type="submit"] {
+  background-color: #1c3e63;
+  color: #fff;
+  padding: 5px 20px;
+  margin-top: 20%;
+  border: none;
+  cursor: pointer;
 }
