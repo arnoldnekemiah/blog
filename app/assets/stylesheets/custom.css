@@ -1,11 +1,11 @@
 /* Create Post on behalf of user */
 .new-post {
-    color: rgb(47, 0, 255);
+  color: rgb(47, 0, 255);
 }
 
 .Add-post-container {
-    display: flex;
-    gap: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 /* Add comment form */
@@ -18,11 +18,10 @@
 }
 
 .add-comment-div {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .add-comment-div .comment textarea {
-    border: 1px solid #2f2626;
-  }
-
+  border: 1px solid #2f2626;
+}
