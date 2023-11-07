@@ -1,0 +1,38 @@
+/* Create Post on behalf of user */
+.new-post {
+  color: rgb(47, 0, 255);
+}
+
+.Add-post-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Add comment form */
+.add-comments-container {
+  max-width: 500px;
+  margin: -11px auto 20px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.add-comment-div {
+  display: flex;
+  gap: 1rem;
+}
+
+.add-comment-div .comment textarea {
+  border: 1px solid #2f2626;
+  height: 20px;
+  width: 100%;
+}
+
+.add-comment-button input[type="submit"] {
+  background-color: #1c3e63;
+  color: #fff;
+  padding: 5px 20px;
+  margin-top: 20%;
+  border: none;
+  cursor: pointer;
+}

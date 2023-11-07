@@ -24,6 +24,8 @@
       <div class="post-stats">
         <span>Comments: <%= post.comments.count %></span>
         <span>Likes: <%= post.likes.count %></span>
+        <%= link_to '<i class="fas fa-heart"></i>'.html_safe, user_post_path(@user, post, like: true), method: :post, class: 'like-link' %>
+
       </div>
     </div>
   <% end %>
