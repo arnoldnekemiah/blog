@@ -14,7 +14,8 @@
   </div>
   <div class="post-stats">
     Comments: <%= @post.comments.count %> |
-    <%= link_to 'Like', like_user_post_path(@user, @post), method: :post, class: 'like-link' %>
+    <%= link_to 'Like', user_post_path(@user, @post, like: true), method: :post, class: 'like-link' %>
+
   </div>
 </div>
 

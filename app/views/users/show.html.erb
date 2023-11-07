@@ -15,6 +15,7 @@
   <h2>BIO</h2>
   <p><%= @user.bio %></p>
 </div>
+
 <% @user.most_recent_posts.each do |post| %>
   <%= link_to user_post_path(@user, post), class: "post-link" do %>
     <div class="post-row">
@@ -23,12 +24,11 @@
       <div class="post-stats">
         <span>Comments: <%= post.comments.count %></span>
         <span>Likes: <%= post.likes.count %></span>
-        <%= link_to '<i class="fas fa-heart"></i>'.html_safe, like_user_post_path(@user, post), method: :post, class: 'like-link' %>
+        <%= link_to '<i class="fas fa-heart"></i>'.html_safe, user_post_path(@user, post, like: true), method: :post, class: 'like-link' %>
+
       </div>
     </div>
   <% end %>
 <% end %>
-
-
 
 <%= link_to 'See all posts', user_posts_path(@user), class: 'see-all-posts-btn' %>
