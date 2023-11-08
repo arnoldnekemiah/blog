@@ -1,4 +1,4 @@
-require "application_system_test_case"
+require 'application_system_test_case'
 class UserShowTest < ApplicationSystemTestCase
   setup do
     @user = FactoryBot.create(:user, name: 'John', bio: 'Bio content')

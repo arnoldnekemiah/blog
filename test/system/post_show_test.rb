@@ -15,7 +15,7 @@ class PostShowTest < ApplicationSystemTestCase
     assert_selector 'h1', text: 'Here is the detail of a post for a specific user'
     assert_selector '.post-title', text: @post.title
     assert_selector '.post-content', text: @post.text
-    assert_selector '.post-stats', text: "Comments: 1 | Likes: 0"
+    assert_selector '.post-stats', text: 'Comments: 1 | Likes: 0'
 
     assert_selector '.like-form'
     if has_css?('.unlike-link')
@@ -31,7 +31,7 @@ class PostShowTest < ApplicationSystemTestCase
     assert_selector "input[type='submit'][value='Add Comment']"
 
     assert_selector 'h2', text: 'Comments'
-    
+
     # Check for comment items with specific content
     assert_selector '.comment', text: 'John : Test Comment'
   end
