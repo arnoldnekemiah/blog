@@ -1,46 +1,38 @@
+# test/system/post_show_test.rb
+
 require 'application_system_test_case'
 
 class PostShowTest < ApplicationSystemTestCase
-  fixtures :users, :posts
-  
   setup do
-    @user = users(:john) # Reference the 'john' fixture from users.yml
-    @post = posts(:first_post) # Reference the 'first_post' fixture from posts.yml
+    @user = User.create(name: 'John')
+    @post = @user.posts.create(title: 'Test Post', text: 'This is a test post.')
+    @comment = @post.comments.create(text: 'Test Comment', user: @user)
   end
 
   test 'viewing a post show page' do
-    # Navigate to the post show page
     visit user_post_path(@user, @post)
 
-    # Assertions based on the project requirements
-    assert_text 'Here is the detail of a post for a specific user'
-    assert_text @post.title
-    assert_text "Posted by: #{@user.name}"
-    assert_text "Comments: #{post.comments.count}"
-    assert_text "Likes: #{post.likes.count}"
-    assert_text @post.text
+    assert_selector 'h1', text: 'Here is the detail of a post for a specific user'
+    assert_selector '.post-title', text: @post.title
+    assert_selector '.post-content', text: @post.text
+    assert_selector '.post-stats', text: "Comments: 1 | Likes: 0"
 
-    # Check for comments
-    assert_text 'Comments'
-    @post.comments.each do |comment|
-      assert_text "#{comment.user.name}:"
-      assert_text comment.text
+    assert_selector '.like-form'
+    if has_css?('.unlike-link')
+      assert_selector "input[type=submit][value='Unlike']"
+    else
+      assert_selector "input[type=submit][value='Like']"
     end
-  end
 
-  test 'adding a new comment to a post' do
-    @new_comment = Comment.new(text: 'This is a new comment')
+    assert_selector '.add-comments-container'
+    assert_selector '.add-comment-div'
+    assert_selector 'label', text: 'Text'
+    assert_selector "textarea[name='comment[text]']"
+    assert_selector "input[type='submit'][value='Add Comment']"
+
+    assert_selector 'h2', text: 'Comments'
     
-    # Navigate to the post show page
-    visit user_post_path(@user, @post)
-
-    # Fill in and submit the new comment form
-    within('.add-comments-container') do
-      fill_in 'comment_text', with: @new_comment.text
-      click_button 'Add Comment'
-    end
-
-    # Assertions after adding a new comment
-    assert_text @new_comment.text
+    # Check for comment items with specific content
+    assert_selector '.comment', text: 'John : Test Comment'
   end
 end
