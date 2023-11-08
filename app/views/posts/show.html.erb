@@ -18,17 +18,20 @@
     Likes: <%= @post.likes.count %>
   </div>
 
-  <div class="like-form">
-    <%= form_tag like_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
-      <% if current_user.likes?(@post) %>
+   <div class="like-form">
+    <% if current_user.likes?(@post) %>
+      <%= form_tag unlike_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
         <%= hidden_field_tag 'like', 'false' %>
         <%= submit_tag 'Unlike', class: 'unlike-link' %>
-      <% else %>
+      <% end %>
+    <% else %>
+      <%= form_tag like_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
         <%= hidden_field_tag 'like', 'true' %>
         <%= submit_tag 'Like', class: 'like-link' %>
       <% end %>
     <% end %>
   </div>
+
 </div>
 
 <!-- Add Comment Form -->
