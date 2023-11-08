@@ -2,8 +2,8 @@
 <%= link_to user_path(@user), class: "user-row-link" do %>
   <div class="user-row">
     <div class="user-photo">
-      <%= image_tag @user.photo %>
-    </div>
+    <img src="<%= @user.photo %>" alt="User Photo">
+  </div>
     <div class="user-info">
       <h2><%= @user.name %></h2>
       <div class="post-counter">Number of posts: <%= @user.posts.count %></div>
