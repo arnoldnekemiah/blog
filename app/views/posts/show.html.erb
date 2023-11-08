@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<h1>Here is detail of a post for a specific user</h1>
+<h1>Here is the detail of a post for a specific user</h1>
 <div class="post-detail-row">
   <div class="post-title">
     <%= @post.title %>
@@ -12,10 +12,22 @@
   <div class="post-content">
     <%= @post.text %>
   </div>
+
   <div class="post-stats">
     Comments: <%= @post.comments.count %> |
-    <%= link_to 'Like', user_post_path(@user, @post, like: true), method: :post, class: 'like-link' %>
+    Likes: <%= @post.likes.count %>
+  </div>
 
+  <div class="like-form">
+    <%= form_tag like_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
+      <% if current_user.likes?(@post) %>
+        <%= hidden_field_tag 'like', 'false' %>
+        <%= submit_tag 'Unlike', class: 'unlike-link' %>
+      <% else %>
+        <%= hidden_field_tag 'like', 'true' %>
+        <%= submit_tag 'Like', class: 'like-link' %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -33,7 +45,6 @@
     </div>
   <% end %>
 </div>
-
 
 <!-- Display Existing Comments -->
 <div class="comments-container">

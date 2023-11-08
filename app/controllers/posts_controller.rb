@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
@@ -45,23 +46,37 @@ class PostsController < ApplicationController
   end
 
   def like
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
-    @like = current_user.likes.build(post: @post)
+    @like = current_user.likes.find_or_initialize_by(post: @post)
 
     if @like.save
-      @like.update_likes_counter
-      flash[:notice] = 'Liked the post!'
+      redirect_to user_post_path(@user, @post)
     else
-      flash[:error] = 'Failed to add a like.'
+      redirect_to user_post_path(@user, @post), alert: 'Failed to like the post.'
     end
+  end
 
-    redirect_to user_post_path(@user, @post)
+  def unlike
+    @user = User.find(params[:user_id])
+    @post = Post.find(params[:id])
+    @like = current_user.likes.find_by(post: @post)
+
+    if @like&.destroy
+      redirect_to user_post_path(@user, @post)
+    else
+      redirect_to user_post_path(@user, @post), alert: 'Failed to unlike the post.'
+    end
   end
 
   private
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def set_post
-    @post = Post.find(params[:id])
+    @post = @user.posts.find(params[:id])
   end
 
   def post_params
