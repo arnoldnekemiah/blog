@@ -36,3 +36,196 @@
   border: none;
   cursor: pointer;
 }
+
+/* Devise forms styles */
+
+/* sign up form */
+.signup-heading {
+  margin-left: 45%;
+}
+
+
+.sign-up-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.username-div,
+.email-div,
+.set-password,
+.confirm-password {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions input {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions input:hover {
+  background-color: #45a049;
+}
+
+/* Log in form */
+
+.login-heading {
+  margin-left: 45%;
+}
+
+.log-in-form {
+  width: 35%;
+  height: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.remember-me {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+.actions {
+  text-align: center;
+}
+
+.actions input {
+  background-color: #664caf;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions input:hover {
+  background-color: #45a049;
+}
+
+/* Edit user form */
+
+.edit-user-form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.i-text {
+  font-style: italic;
+  color: #666;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.actions input {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions input:hover {
+  background-color: #45a049;
+}
+
+.cancel-account {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cancel-account a {
+  color: red;
+  text-decoration: none;
+}
+
+.cancel-account a:hover {
+  text-decoration: underline;
+}
+
+/* shared links */
+.shared-links-container {
+  max-width: 300px; /* Adjust the width as needed */
+  margin: -30px auto;
+}
+
+.shared-links-container a {
+  display: block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  color: #007bff; /* Adjust the link color */
+}
+
+.shared-links-container a:hover {
+  text-decoration: underline;
+}

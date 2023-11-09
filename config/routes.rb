@@ -8,6 +8,4 @@ Rails.application.routes.draw do
     patch 'unlike', on: :member
   end
 end
-
-  
 end
