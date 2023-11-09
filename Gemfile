@@ -5,6 +5,7 @@ ruby '3.1.2'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'bootsnap', require: false
+gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'
@@ -15,7 +16,6 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mswin mswin64 mingw x64_mingw jruby]
-gem 'devise'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mswin mswin64 mingw x64_mingw]
