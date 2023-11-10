@@ -165,6 +165,13 @@ it will run the all the unit test of these project
 - Twitter: [@twitterhandle](https://twitter.com/arnoldikonde)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/arnoldnekemiah/)
 
+
+👤 *Joy Tari*
+
+- GitHub: [@githubhandle](https://github.com/JoyTaribagshaw)
+- Twitter: [@twitterhandle](https://twitter.com/JoyTariBagshaw)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/joytaribagshaw)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
