@@ -48,9 +48,6 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
 .username-div,
@@ -70,6 +67,13 @@
   text-align: center;
 }
 
+input {
+  padding: 8px;
+  box-sizing: border-box;
+  width: 20rem;
+  margin: auto;
+}
+
 .remember-me {
   margin-top: 10px;
   display: flex;
@@ -81,10 +85,11 @@
 }
 
 .actions input {
-  background-color: #4caf50;
+  background-color: #3819e5;
   color: white;
   padding: 10px 15px;
   border: none;
+  margin: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -104,21 +109,16 @@
   height: 50%;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
 .field {
   margin-bottom: 15px;
 }
 
-
-.input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+.login-btn {
+  margin-left: -15rem;
 }
+
 
 /* Edit user form */
 
@@ -126,9 +126,6 @@
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
 .i-text {
@@ -148,14 +145,14 @@
 
 .shared-links-container {
   max-width: 300px;
-  margin: -30px auto;
+  margin: -20px auto;
 }
 
 .shared-links-container a {
   display: block;
-  margin-bottom: 10px;
   text-decoration: none;
   color: #007bff;
+  margin: 10px 1px 1px -50px;
 }
 
 .shared-links-container a:hover {
