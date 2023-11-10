@@ -66,14 +66,18 @@
   color: #333;
 }
 
-.input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
 .actions {
   text-align: center;
+}
+
+.remember-me {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.remember-me input {
+  margin-right: 5px;
 }
 
 .actions input {
@@ -109,44 +113,12 @@
   margin-bottom: 15px;
 }
 
-.label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
 .input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
 }
 
-.remember-me {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.remember-me input {
-  margin-right: 5px;
-}
-
-.actions {
-  text-align: center;
-}
-
-.actions input {
-  background-color: #664caf;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.actions input:hover {
-  background-color: #45a049;
-}
 
 /* Edit user form */
 
@@ -159,43 +131,9 @@
   border-radius: 5px;
 }
 
-.field {
-  margin-bottom: 15px;
-}
-
-.label {
-  display: block;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
 .i-text {
   font-style: italic;
   color: #666;
-}
-
-.actions {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.actions input {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.actions input:hover {
-  background-color: #45a049;
 }
 
 .cancel-account {
@@ -208,13 +146,8 @@
   text-decoration: none;
 }
 
-.cancel-account a:hover {
-  text-decoration: underline;
-}
-
-/* shared links */
 .shared-links-container {
-  max-width: 300px; /* Adjust the width as needed */
+  max-width: 300px;
   margin: -30px auto;
 }
 
@@ -222,9 +155,13 @@
   display: block;
   margin-bottom: 10px;
   text-decoration: none;
-  color: #007bff; /* Adjust the link color */
+  color: #007bff;
 }
 
 .shared-links-container a:hover {
+  text-decoration: underline;
+}
+
+.cancel-account a:hover {
   text-decoration: underline;
 }
