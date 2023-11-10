@@ -5,6 +5,7 @@ ruby '3.1.2'
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'bootsnap', require: false
+gem 'devise'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'

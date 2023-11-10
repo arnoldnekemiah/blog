@@ -1,0 +1,22 @@
+<h2 class = "login-heading">Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class = "log-in-form">
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "password" %>
+  </div>
+
+  
+
+  <div class="actions login-btn">
+    <%= f.submit "Log in" %>
+  </div>
+  </div>
+  
+<% end %>
+
+<%= render "devise/shared/links" %>
