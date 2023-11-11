@@ -169,3 +169,11 @@ input {
   border-radius: 5px;
   text-decoration: none;
 }
+
+.sign-out {
+  color: #007bff;
+  margin-left: 80rem;
+  font-size: 32px;
+  font-weight: 600;
+  font-style: italic;
+}
