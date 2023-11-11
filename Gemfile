@@ -6,6 +6,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'bootsnap', require: false
 gem 'devise'
+gem 'cancancan'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.1'

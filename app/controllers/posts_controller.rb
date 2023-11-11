@@ -1,26 +1,29 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
 
+  # def index
+  #   @user = User.find(params[:user_id])
+  #   @posts = @user.posts.includes(:comments)
+  # end
+
   def index
-    @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments)
   end
 
+
   def show
-    @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
     @comments = @post.comments
     @new_comment = Comment.new
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @post = Post.new
+    @post = @user.posts.build
   end
 
+  
   def create
-    @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
 
     if @post.save
@@ -29,6 +32,8 @@ class PostsController < ApplicationController
       render :new
     end
   end
+  
+  
 
   def edit; end
 
@@ -80,6 +85,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :text)
+    params.require(:post).permit(:title, :text, :author_id)
   end
+  
 end

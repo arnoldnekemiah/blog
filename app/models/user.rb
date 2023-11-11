@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :posts, foreign_key: 'author_id'
 
+  def admin?
+    role == 'admin' # Adjust based on how you determine if a user is an admin
+  end
+
   def likes?(post)
     likes.exists?(post_id: post.id)
   end
