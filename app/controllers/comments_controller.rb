@@ -5,11 +5,11 @@ class CommentsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.user = current_user  # Make sure current_user is correctly assigned
-  
+    @comment.user = current_user # Make sure current_user is correctly assigned
+
     puts "Current User ID: #{current_user.id}"
     puts "Comment User ID: #{@comment.user_id}"
-  
+
     if @comment.save
       redirect_to user_post_path(@user, @post)
     else
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    
+
     authorize! :destroy, @comment
 
     @comment.destroy
