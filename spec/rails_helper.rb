@@ -7,6 +7,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 require 'rspec/rails'
 require 'factory_bot_rails'
 require 'rails-controller-testing'
+require 'swagger_helper'
+
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
