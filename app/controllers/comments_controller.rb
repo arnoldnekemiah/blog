@@ -1,19 +1,21 @@
 class CommentsController < ApplicationController
+  before_action :load_post, only: [:create]
   load_and_authorize_resource
 
-  def create
-    @user = User.find(params[:user_id])
+  def index
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
-    @comment.user = current_user # Make sure current_user is correctly assigned
+    @comments = @post.comments
 
-    puts "Current User ID: #{current_user.id}"
-    puts "Comment User ID: #{@comment.user_id}"
+    render json: @comments, except: %i[created_at updated_at]
+  end
+
+  def create
+    @comment = @post.comments.build(comment_params.merge(user: current_user))
 
     if @comment.save
-      redirect_to user_post_path(@user, @post)
+      render json: @comment, status: :created, location: user_post_comment_path(@user, @post, @comment)
     else
-      render 'new'
+      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -22,15 +24,18 @@ class CommentsController < ApplicationController
     authorize! :destroy, @comment
 
     if @comment.destroy
-      flash[:notice] = 'Comment was successfully deleted.'
+      render json: { notice: 'Comment was successfully deleted.' }
     else
-      flash[:error] = 'Failed to delete the comment.'
+      render json: { error: 'Failed to delete the comment.' }, status: :unprocessable_entity
     end
-
-    redirect_back(fallback_location: root_path)
   end
 
   private
+
+  def load_post
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find(params[:post_id])
+  end
 
   def comment_params
     params.require(:comment).permit(:text)

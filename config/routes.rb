@@ -9,4 +9,14 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:destroy]
+
+  resources :users, only: [] do
+    resources :posts, only: [:index]
+  end
+
+  resources :posts, only: [] do
+    resources :comments, only: [:index, :create, :destroy]
+    patch 'like', on: :member
+    patch 'unlike', on: :member
+  end
 end
