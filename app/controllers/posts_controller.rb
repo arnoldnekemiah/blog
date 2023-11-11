@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: %i[like unlike]
   before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
   def index
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @comments = @post.comments
-    @new_comment = Comment.new(user: current_user, post: @post) # Initialize with the current post
+    @show ||= Comment.new(user: current_user, post: @post) # Initialize with the current post
   end
 
   def new
@@ -41,25 +41,35 @@ class PostsController < ApplicationController
   end
 
   def like
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @like = current_user.likes.find_or_initialize_by(post: @post)
+
+    authorize! :create, Like # Authorize creation of Like objects
+
     if @like.save
-      redirect_to user_post_path(@user, @post)
+      @like.update_likes_counter
+      flash[:notice] = 'Liked the post!'
     else
-      redirect_to user_post_path(@user, @post), alert: 'Failed to like the post.'
+      flash[:error] = 'Failed to like the post.'
     end
+
+    redirect_to user_post_path(@user, @post)
   end
 
   def unlike
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @like = current_user.likes.find_by(post: @post)
+
+    authorize! :destroy, @like # Authorize destruction of Like objects
+
     if @like&.destroy
-      redirect_to user_post_path(@user, @post)
+      @like.update_likes_counter
+      flash[:notice] = 'Unliked the post!'
     else
-      redirect_to user_post_path(@user, @post), alert: 'Failed to unlike the post.'
+      flash[:error] = 'Failed to unlike the post.'
     end
+
+    redirect_to user_post_path(@user, @post)
   end
 
   private

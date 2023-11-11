@@ -24,7 +24,6 @@
 <% end %>
 
    <div class="like-form">
-    <% unless current_user == @post.author %>
       <% if current_user.likes?(@post) %>
         <%= form_tag unlike_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
           <%= hidden_field_tag 'like', 'false' %>
@@ -36,7 +35,6 @@
         <%= submit_tag 'Like', class: 'like-link' %>
       <% end %>
     <% end %>
-  <% end %>
 </div>
 
 </div>
@@ -70,8 +68,8 @@
     </div>
   <% end %>
 
-<!-- Display New Comment -->
 <% unless @new_comment.nil? || @new_comment.new_record? %>
+  <!-- Display New Comment -->
   <div class="comment">
     <span class="comment-author"><%= @new_comment.user.name %> :</span>
     <span class="comment-text"><%= @new_comment.text %></span>
@@ -81,5 +79,6 @@
     <% end %>
   </div>
 <% end %>
+
 
 </div>
