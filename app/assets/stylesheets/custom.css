@@ -177,3 +177,15 @@ input {
   font-weight: 600;
   font-style: italic;
 }
+
+.create-post-btn {
+  width: 100px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+}
+
+.create-post-btn:hover {
+  background-color: rgb(98, 156, 98);
+  color: #2f2626;
+}
