@@ -25,3 +25,4 @@ Comment.create(post: first_post, author: second_user, text: "I'm a teacher too!"
 Comment.create(post: first_post, author: third_user, text: 'Hello Tom!')
 Comment.create(post: first_post, author: third_user, text: 'Glad to meet you!')
 Comment.create(post: first_post, author: third_user, text: "I'm from Mexico too!")
+

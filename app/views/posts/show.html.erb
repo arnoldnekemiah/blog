@@ -17,26 +17,31 @@
     Comments: <%= @post.comments.count %> |
     Likes: <%= @post.likes.count %>
   </div>
+  
+  <!-- Delete post -->
+<% if @post.user_id == current_user %>
+  <%= button_to 'Delete', user_post_path(@user, @post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+<% end %>
 
    <div class="like-form">
-    <% if current_user.likes?(@post) %>
-      <%= form_tag unlike_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
-        <%= hidden_field_tag 'like', 'false' %>
-        <%= submit_tag 'Unlike', class: 'unlike-link' %>
-      <% end %>
-    <% else %>
+      <% if current_user.likes?(@post) %>
+        <%= form_tag unlike_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
+          <%= hidden_field_tag 'like', 'false' %>
+          <%= submit_tag 'Unlike', class: 'unlike-link' %>
+        <% end %>
+      <% else %>
       <%= form_tag like_user_post_path(@user, @post), method: :patch, class: 'like-form' do %>
         <%= hidden_field_tag 'like', 'true' %>
         <%= submit_tag 'Like', class: 'like-link' %>
       <% end %>
     <% end %>
-  </div>
+</div>
 
 </div>
 
 <!-- Add Comment Form -->
 <div class="add-comments-container">
-  <%= form_for [@user, @post, @new_comment] do |f| %>
+  <%= form_for [@user, @post, @new_comment || Comment.new] do |f| %>
     <div class="add-comment-div">
       <div class="comment">
         <%= f.label :text %>
@@ -56,6 +61,24 @@
     <div class="comment">
       <span class="comment-author"><%= comment.user.name %> :</span>
       <span class="comment-text"><%= comment.text %></span>
+      <!-- Delete comment -->
+      <% if can? :destroy, comment %>
+        <%= button_to 'Delete', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+      <% end %>
     </div>
   <% end %>
+
+<% unless @new_comment.nil? || @new_comment.new_record? %>
+  <!-- Display New Comment -->
+  <div class="comment">
+    <span class="comment-author"><%= @new_comment.user.name %> :</span>
+    <span class="comment-text"><%= @new_comment.text %></span>
+    <!-- Delete comment -->
+    <% if can? :destroy, @new_comment %>
+      <%= button_to 'Delete', [@user, @post, @new_comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-button' %>
+    <% end %>
+  </div>
+<% end %>
+
+
 </div>

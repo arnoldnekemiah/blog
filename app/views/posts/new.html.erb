@@ -2,13 +2,19 @@
 
 <%= form_for [@user, @post], url: user_posts_path(@user) do |f| %>
 <div class="Add-post-container">
+
+ <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
  <div class="field">
     <%= f.label :text %>
     <%= f.text_field :title %>
   </div>
 
   <div class="create-post">
-    <%= f.submit 'Create Post' %>
+    <%= f.submit 'Create Post', class:"create-post-btn" %>
   </div>
 </div>
  
